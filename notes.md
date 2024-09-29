@@ -71,6 +71,14 @@ import { bootstrapApplication } from '@angular/platform-browser'
 bootstrapApplication(AppComponent);
 bootstrapApplication(HeaderComponent);
 ```
+
+### Important Concept Regarding CSS
+- A component can only see its own styles. For example, styles defined in `header.component.css` can only be seen by `HeaderComponent` and not by `AppComponent`.
+
+- Above point maybe easy to understand as header component is a child of app componet so its style are not visible to app component.
+
+- But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses <mark>Shadow DOM</markj> to encapsulate styles.
+
 ### Dynamic Content & Getters For Computed Values
 All properties defined in component class are available in template of that class.
 
