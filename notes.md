@@ -20,6 +20,7 @@
 ng new project-name # like nest new project-name
 npm start # ng serve
 ng serve
+ng g c header # ng generate component header
 ```
 ### index.html
 - Loaded by the browsers when visitor visit the website.
@@ -70,3 +71,33 @@ import { bootstrapApplication } from '@angular/platform-browser'
 bootstrapApplication(AppComponent);
 bootstrapApplication(HeaderComponent);
 ```
+### Dynamic Content & Getters For Computed Values
+All properties defined in component class are available in template of that class.
+
+```js
+// String interpolation: access any public property of class
+{{ selectedUser.name }}
+
+<img src="{{ selectedUser.avatar }}" />
+
+// Property Binding: Skip double curly brackets when configuring an element through its attributes
+<img [src]="selectedUser.avatar" [alt]="selectedUser.name"/>
+<img [src]="'assets/user/' + selectedUser.avatar" />
+
+// Getters for computed values
+get imagePath () {
+    return 'assets/user/' + this.selectedUser.avatar
+}
+```
+### State
+- So easy.. no setState hanky panky!!
+- Uses zone.js behind the scene to detect changes
+
+### Signals
+- looks like retarded useState
+- trackable data containers
+- an object that stores a value (any type of value)
+- notify Angular when values change so Angular can update parts of UI where those values are used
+
+### Topics to Revisit/Revise
+- Video: 28 - on signals
