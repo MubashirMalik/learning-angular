@@ -77,7 +77,7 @@ bootstrapApplication(HeaderComponent);
 
 - Above point maybe easy to understand as header component is a child of app componet so its style are not visible to app component.
 
-- But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses <mark>Shadow DOM</markj> to encapsulate styles.
+- But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses <mark>Shadow DOM</mark> to encapsulate styles.
 
 ### Dynamic Content & Getters For Computed Values
 All properties defined in component class are available in template of that class.
