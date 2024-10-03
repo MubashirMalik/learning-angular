@@ -133,6 +133,7 @@ export class UserComponent {
 
 ### Outputs & Emitting Data
 - Reverse props?
+- We can make emitters of type void like `new EventEmitter<void>()`.
 ```ts
 @Input({ required: true }) id!: string
 @Output() select = new EventEmitter()
@@ -143,6 +144,7 @@ onSelectUser() {
     this.select.emit()
 }
 
+// Event Binding -> (select), (click)
 <app-user 
     (select)="onselectUser($event)"
     [id]="users[0].id"
@@ -179,6 +181,85 @@ onSelectUser() {
 
 ### Storing Data Models
 - Store in separate files e.g., `user.model.ts` 
+
+### Dynamic CSS Styling with Class Bindings
+```ts
+// Here active is a class name defined in .css file.
+<li [class.active]="selectedItem">Create Account</li>
+```
+### NgModel
+- An **element enhancement** that helps with extracting (or changing) user input values.
+- Components are directives! Directives with templates.
+- **Two-way-binding:** Read & Write data from & to input field. 
+- Register directive by importing `FormsModule` in imports.
+
+```ts
+title = ''
+
+<input 
+    type="text"
+    name="title"
+    [(ngModel)]="title" // two-way-binding syntax
+/>
+```
+- To use signals with two-way-binding, use declare a signal in ts file. Code in template remains same.
+- If `FormsModule` is imported, Angular stops page refresh when form is submitted.
+- `(ngSubmit)="onMySubmit()"` is emitted when form is submitted.
+
+### Content Projection: Higher Order Component of React?
+```html
+<div>
+    <!-- Acts as a placeholder for wrapped markup -->
+    <ng-content /> 
+</div>
+```
+
+### Transforming Template Data with Pipes
+```ts
+// import DatePipe & add in imports array.
+{{ task.dueDate | date: 'short' }}
+```
+
+### Services
+- Outsource data and logic from a component into a service and then inject that service in all the components that might be interested in the data and some of the methods exposed by the method.
+- <mark>Didn't understand dependency injection here! Need a lecture on dependency injection. Maybe make another markdown file.</mark>
+- 1 thing that I understood here is that if you are using `Output` took much it means you should be using services.
+
+```ts
+construction(
+    private tasksService: TasksService
+) {}
+
+// Alternative Syntax
+private tasksService = inject(TasksService)
+
+@Injectable({ providedIn: 'root' })
+export class TasksService {
+    // ...
+}
+```
+
+### Modules
+- We worked with `standalone` components so far.
+- Nowadays, recommended and most modern way of combining/making Angular components.
+- Its just like modules of Nest.js. 
+- **Pros:** Components decorator declaration gets leaner because we don't need imports array.
+- **Cons:** We don't know which component is using which other components and we need to create extra modules.
+
+```ts
+
+@NgModule({
+    // declare all the components/directives that need to work together
+    declarations: [AppComponent, ...],
+    bootstrap: [AppComponent],
+    imports: [BrowserModule, ...] // <- Standalone components
+})
+export class AppModule {}
+```
+- Modules & standalone components are rivaling concepts so standalone components can't be imported into declarations rather we add them in imports.
+- If we are not using root component as standalone, need to change `main.ts`.
+- We can use modules in standalone components. Remember, `FormsModule`?
+
 
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]
