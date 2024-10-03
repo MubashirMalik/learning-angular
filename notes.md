@@ -21,6 +21,8 @@ ng new project-name # like nest new project-name
 npm start # ng serve
 ng serve
 ng g c header # ng generate component header
+ng g c my-component --skip-tests
+ng g c tasks/task --skip-tests
 ```
 ### index.html
 - Loaded by the browsers when visitor visit the website.
@@ -107,5 +109,77 @@ get imagePath () {
 - an object that stores a value (any type of value)
 - notify Angular when values change so Angular can update parts of UI where those values are used
 
+### Component Inputs (Props)
+
+- Just like props of react.
+
+```ts
+export class UserComponent {
+    // Receiving Props
+    @Input({ required: true }) firstName!: string
+    @Input() lastName!: string
+
+    // ! Convinces ts that we will always have value here.
+
+    @Input() middleName?: string
+    // ? Tells ts that it might not be initialized and its ok.
+
+    // Another alternative
+    @Input() age: number | undefined
+
+```
+- There is another way to do this using signal inputs.
+
+
+### Outputs & Emitting Data
+- Reverse props?
+```ts
+@Input({ required: true }) id!: string
+@Output() select = new EventEmitter()
+// another way to do this is using output function. 
+// select = output<string>()
+
+onSelectUser() {
+    this.select.emit()
+}
+
+<app-user 
+    (select)="onselectUser($event)"
+    [id]="users[0].id"
+/>
+```
+- There is another way to do this using `output()` function. 
+- It just exists as an alternative syntax so you can write code without decorators.
+- Doesn't use signals.. just a different syntax!
+- But, `output()` way of doing is more secure as TypeScript throws error if no type is provided.
+
+### For Loop
+
+- track is like key we provide in map in react.
+```ts
+@for (user of users; track user.id) {
+    <li>
+        <app-user [user]="user" (select)="onSelectUser($event)">
+    </li>
+}
+```
+
+### Conditional Rendering
+```ts
+@if (selectedUser) {
+    <app-tasks ... />
+} @else {
+    <p id="fallback">Any text...</p>
+}
+```
+
+### Legacy: ngFor & ngIf
+- These are structural directives.
+- Currently, I am not learning these as new syntax is cleaner & easier.
+
+### Storing Data Models
+- Store in separate files e.g., `user.model.ts` 
+
 ### Topics to Revisit/Revise
-- Video: 28 - on signals
+- Signals: Videos: [28, 32]
+- Types vs Interfaces
