@@ -9,7 +9,7 @@
 | Section 2  | Completed | 27 Sep, 2024 | 4 Oct, 2024 | 2 Oct, 2024
 | Section 3  |  Completed till 69  | 4 Oct, 2024 | | 4 Oct, 2024
 | Section 4  |    |
-
+| Section 5 | Completed |
 
 
 ### GOAL
