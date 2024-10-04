@@ -35,8 +35,8 @@ ng g c tasks/task --skip-tests
 
 - But, in page source we can see script tags which are automatically inserted by Angular CLI.
 
-### Component
-
+### Component (Separtaion of Concerns)
+- Every componet should do one thing.
 ```ts
 // File Naming Conventions
 // header.component.html
@@ -136,12 +136,13 @@ export class UserComponent {
 - We can make emitters of type void like `new EventEmitter<void>()`.
 ```ts
 @Input({ required: true }) id!: string
-@Output() select = new EventEmitter()
-// another way to do this is using output function. 
+@Output() select = new EventEmitter() // It is better to provide type here like EventEmtitter<void>, EventEmtitter<string> etc.
+// another way of doing this is by using output function. 
 // select = output<string>()
 
 onSelectUser() {
     this.select.emit()
+    // this.select.emit('sharing a string with parent component')
 }
 
 // Event Binding -> (select), (click)
@@ -192,7 +193,7 @@ onSelectUser() {
 - Components are directives! Directives with templates.
 - **Two-way-binding:** Read & Write data from & to input field. 
 - Register directive by importing `FormsModule` in imports.
-
+- `name ` attribute is required for ngModel to work.
 ```ts
 title = ''
 
@@ -223,7 +224,7 @@ title = ''
 ### Services
 - Outsource data and logic from a component into a service and then inject that service in all the components that might be interested in the data and some of the methods exposed by the method.
 - <mark>Didn't understand dependency injection here! Need a lecture on dependency injection. Maybe make another markdown file.</mark>
-- 1 thing that I understood here is that if you are using `Output` took much it means you should be using services.
+- 1 thing that I understood here is that if you are using `Output` too much it means you should be using services.
 
 ```ts
 construction(
@@ -251,16 +252,29 @@ export class TasksService {
 @NgModule({
     // declare all the components/directives that need to work together
     declarations: [AppComponent, ...],
-    bootstrap: [AppComponent],
-    imports: [BrowserModule, ...] // <- Standalone components
+    bootstrap: [AppComponent], // Only in root module
+    imports: [BrowserModule, ...], // <- Standalone components
+    exports: []
 })
 export class AppModule {}
 ```
 - Modules & standalone components are rivaling concepts so standalone components can't be imported into declarations rather we add them in imports.
 - If we are not using root component as standalone, need to change `main.ts`.
 - We can use modules in standalone components. Remember, `FormsModule`?
+- `BrowserModule` already has pipes included so don't need to import them again.
+- Every module must work on its own. If a module needs something, it must declare or import it itself. It can't get it from any parent module that is using this module.
+- `BrowserModule` is only meant to be imported in root module. So, other modules should use `CommonModule` instead.
 
+### Using images from public folder
+- Images (and statically served assets in general) are now stored in the public/ folder - NOT in a nested assets/ folder!
+
+- To reference images stored in the public/ folder we would use a path like this: `<img src="some-image.png">` - i.e., the public folder name is NOT part of that path (it's NOT `<img src="public/some-image.png">`)
+
+### Pipes
+- Pipes are used to transform data in the template.
+- Angular provides some built-in pipes like `uppercase`, `date`, `currency`, `json`, `async` etc.
 
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]
 - Types vs Interfaces
+- Maybe some guide here after reading notes (if not enough) so if i have work with modules, this guide is still useful.
