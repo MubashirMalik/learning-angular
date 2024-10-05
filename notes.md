@@ -82,7 +82,7 @@ bootstrapApplication(HeaderComponent);
 - But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses <mark>Shadow DOM</mark> to encapsulate styles.
 
 ### Dynamic Content & Getters For Computed Values
-All properties defined in component class are available in template of that class.
+- All properties defined in component class are available in template of that class.
 
 ```js
 // String interpolation: access any public property of class
@@ -99,6 +99,8 @@ get imagePath () {
     return 'assets/user/' + this.selectedUser.avatar
 }
 ```
+- We can omit property binding for string values and just you like react props e.g., `title="A title"`.
+
 ### State
 - So easy.. no setState hanky panky!!
 - Uses zone.js behind the scene to detect changes
