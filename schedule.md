@@ -11,7 +11,7 @@
 | Section 4  |   done |
 | Section 5 | done |
 | Section 6 | Completed till 101 |
-
+| Section 14 | Completed till 271, Observables blockage! |
 
 ### GOAL
 - Complete till 30th October.

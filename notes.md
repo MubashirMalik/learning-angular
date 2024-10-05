@@ -276,6 +276,78 @@ export class AppModule {}
 - Pipes are used to transform data in the template.
 - Angular provides some built-in pipes like `uppercase`, `date`, `currency`, `json`, `async` etc.
 
+
+### Routing
+- SPA? Single HTML file
+- Give illusion/feel of multiple pages
+```ts
+// main.ts
+bootstrapApplication(AppComponent, appConfig)
+
+// app.config.ts
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideRouter(routes)
+    ]
+}
+
+// app.routes.ts
+export const routes: Routes = [
+    {
+        path: 'tasks',
+        component: TaskComponent 
+    },
+    // Dynamic Routes
+    {
+        path: 'users/:userId', // only :userId can be set too. We can use multiple dynamic path segments.
+        component: UserTasksComponent 
+    }
+]
+
+// app.component.ts
+@Component({
+    //....
+    imports: [RouterOutlet]
+})
+
+// app.component.html
+<div>
+    <router-outlet>
+</div>
+
+// side-bar.component.ts
+@Component({
+    //....
+    imports: [RouterLink, RouterLinkActive]
+})
+
+// side-bar.component.html
+<a routerLink="/tasks" routerLinkActive="mySelectedClass">
+    <span>{{ user().name }}</span>
+</a>
+// Use routerLinkActive for styling active navigation links
+
+// user.component.ts
+<a [routerLink]="['/users', user().id]">
+    <span>{{ user().name }}</span>
+</a>
+
+// same as above but different syntax
+<a [routerLink]="'/users' + user().id">
+    <span>{{ user().name }}</span>
+</a>
+
+// user-tasks.component.ts
+export class UserTasksComponent {
+    // For this approach to work, we need to provide withComponentInputBinding() as second parameter to provideRouter in app.config.ts
+    userId = input.required<string>() // same name as dynamic path parameter
+}
+
+// Above example uses signals, but, same can be achieved using @Input() but I won't repeat both the approaches in all places.
+
+
+```
+
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]
 - Types vs Interfaces
