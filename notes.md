@@ -377,7 +377,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 </ng-template>
 ```
 
-### Attribute
+#### Attribute
 - Only change the element they are placed on.
 - Don't add or remove elements.
 ```ts
@@ -391,3 +391,11 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 // let i = index is optional
 <app-server *ngFor="let server of servers; let i  = index"></app-server>
 ```
+
+### Local Reference in Templates
+- Local reference can only be used in the template where it is defined. No in ts file.
+- I think this is like `useRef` in React.
+```ts
+<input type="text" #serverNameInput /> // returns input element
+<button (click)="onAddServer(serverNameInput)">Add Server</button>
+``` 
