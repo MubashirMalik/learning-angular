@@ -12,8 +12,10 @@
 | Section 5 | done |
 | Section 6 | Completed till 101 |
 | Section 14 | Completed till 271, Observables blockage! |
-| Section 17 | done |
-| Section 18 | Started (Revision) |
+| Section 17 | - |
+| Section 18 | done |
+| Section 19 | done |
+| Section 20 | done |
 
 
 ### GOAL

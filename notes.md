@@ -35,8 +35,8 @@ ng g c tasks/task --skip-tests
 
 - But, in page source we can see script tags which are automatically inserted by Angular CLI.
 
-### Component (Separtaion of Concerns)
-- Every componet should do one thing.
+### Component (Separation of Concerns)
+- Every component should do one thing.
 ```ts
 // File Naming Conventions
 // header.component.html
@@ -77,9 +77,10 @@ bootstrapApplication(HeaderComponent);
 ### Important Concept Regarding CSS
 - A component can only see its own styles. For example, styles defined in `header.component.css` can only be seen by `HeaderComponent` and not by `AppComponent`.
 
-- Above point maybe easy to understand as header component is a child of app componet so its style are not visible to app component.
+- Above point maybe easy to understand as header component is a child of app component so its style are not visible to app component.
 
-- But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses <mark>Shadow DOM</mark> to encapsulate styles.
+- But, what about styles defined in `app.component.css`? Can they be seen by `HeaderComponent`? **No!** Because, Angular uses Shadow DOM</mark> to encapsulate views/styles.
+- View encapsulation can be turned off using `encapsulation: ViewEncapsulation.None` in component file.
 
 ### Dynamic Content & Getters For Computed Values
 - All properties defined in component class are available in template of that class.
@@ -102,7 +103,7 @@ get imagePath () {
 - We can omit property binding for string values and just you like react props e.g., `title="A title"`.
 
 ### State
-- So easy.. no setState hanky panky!!
+- So easy.. no setState hanky-panky!!
 - Uses zone.js behind the scene to detect changes
 
 ### Signals
@@ -138,7 +139,7 @@ export class UserComponent {
 - We can make emitters of type void like `new EventEmitter<void>()`.
 ```ts
 @Input({ required: true }) id!: string
-@Output() select = new EventEmitter() // It is better to provide type here like EventEmtitter<void>, EventEmtitter<string> etc.
+@Output() select = new EventEmitter() // It is better to provide type here like EventEmitter<void>, EventEmitter<string> etc.
 // another way of doing this is by using output function. 
 // select = output<string>()
 
@@ -243,8 +244,7 @@ export class TasksService {
 ```
 
 ### Modules
-- We worked with `standalone` components so far.
-- Nowadays, recommended and most modern way of combining/making Angular components.
+- We worked with `standalone` components so far. Standalone components are recommended and most modern way of combining/making Angular components.
 - Its just like modules of Nest.js. 
 - **Pros:** Components decorator declaration gets leaner because we don't need imports array.
 - **Cons:** We don't know which component is using which other components and we need to create extra modules.
@@ -358,6 +358,36 @@ export class UserTasksComponent {
 ### main.ts
 ```ts
 platformBrowserDynamic().bootstrapModule(AppModule)
-
 ```
 
+### Data Binding
+- Communication between TS Code (Business Logic) & Template (HTML)
+
+### Directives (*ngIf, *ngFor)
+
+- Directives are instructions in the DOM.
+- Tells Angular to do something for us!
+
+#### Structural
+```ts
+// * is required as its structural directive i.e., changes structure of DOM
+<p *ngIf="serverCreated; else noServer">Server was created</p>
+<ng-template #noServer>
+    <p>No server was created!</p>
+</ng-template>
+```
+
+### Attribute
+- Only change the element they are placed on.
+- Don't add or remove elements.
+```ts
+<p 
+    [ngStyle]="{ backgroundColor: 'red' }" 
+    [ngClass]="{ online: serverStatus === 'online' }"
+>
+    {{ status }}
+</p>
+
+// let i = index is optional
+<app-server *ngFor="let server of servers; let i  = index"></app-server>
+```
