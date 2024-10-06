@@ -352,3 +352,12 @@ export class UserTasksComponent {
 - Signals: Videos: [28, 32]
 - Types vs Interfaces
 - Maybe some guide here after reading notes (if not enough) so if i have work with modules, this guide is still useful.
+
+## Angular < 16
+
+### main.ts
+```ts
+platformBrowserDynamic().bootstrapModule(AppModule)
+
+```
+
