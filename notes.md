@@ -209,7 +209,7 @@ title = ''
     [(ngModel)]="title" // two-way-binding syntax
 />
 ```
-- To use signals with two-way-binding, use declare a signal in ts file. Code in template remains same.
+- To use signals with two-way-binding, just declare state with a signal in ts file. Code in template remains same.
 - If `FormsModule` is imported, Angular stops page refresh when form is submitted.
 - `(ngSubmit)="onMySubmit()"` is emitted when form is submitted.
 
@@ -278,6 +278,20 @@ export class AppModule {}
 ### Pipes
 - Pipes are used to transform data in the template.
 - Angular provides some built-in pipes like `uppercase`, `date`, `currency`, `json`, `async` etc.
+
+### Component tags in DOM?
+- Our component elements are not compiled away and do end up the real DOM e.g., `<app-button><button>...</button></app-button>`
+- Selectors found in Angular: https://angular.dev/guide/components/selectors
+
+```ts
+// Rightway
+@Component({
+    `selector: 'button[appButton]'` // button with attribute of appButton on them
+})
+
+// How to use?
+<button appButton></button>
+```
 
 
 ### Routing
