@@ -100,6 +100,9 @@ bootstrapApplication(HeaderComponent);
 get imagePath () {
     return 'assets/user/' + this.selectedUser.avatar
 }
+
+// Better practice: outsource computations
+<img [src]="imagePath" /> // Beware it is not a function call, it should be accessed like a property.
 ```
 - We can omit property binding for string values and just you like react props e.g., `title="A title"`.
 
