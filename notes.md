@@ -25,7 +25,7 @@ ng g c my-component --skip-tests
 ng g c tasks/task --skip-tests
 ```
 ### index.html
-- Loaded by the browsers when visitor visit the website.
+- Loaded by the browsers when visitors visit the website.
 
 - But, it is almost empty with only one strange html element `<app-root></app-root>` in body?
 
