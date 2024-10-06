@@ -84,7 +84,7 @@ bootstrapApplication(HeaderComponent);
 - View encapsulation can be turned off using `encapsulation: ViewEncapsulation.None` in component file.
 
 ### Dynamic Content & Getters For Computed Values
-- All properties defined in component class are available in template of that class.
+- All non-private properties defined in the component class are available in template of that class.
 
 ```js
 // String interpolation: access any public property of class
