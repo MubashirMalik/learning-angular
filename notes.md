@@ -71,7 +71,7 @@ bootstrapApplication(AppComponent);
 bootstrapApplication(HeaderComponent);
 ```
 - Components can be used in this way but it is not how we do it. 
-- Idea is to build a tree of components.
+- Idea is to build a tree of components with one root component.
 - **Why?** Exchange data and communicate with each other.
 - **Then How?** Call bootstrap only once and use other components inside app/root component.
 
