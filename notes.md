@@ -63,10 +63,6 @@ export class AppComponent
 ```
 
 ### How to use components?
-- Components can be used in this way but it is not how we do it. 
-- Idea is to build a tree of components.
-- **Why?** Exchange data and communicate with each other.
-- **Then How?** Call bootstrap only once and use other components inside app/root component.
 ```ts
 import { bootstrapApplication } from '@angular/platform-browser'
 // ... imports
@@ -74,6 +70,10 @@ import { bootstrapApplication } from '@angular/platform-browser'
 bootstrapApplication(AppComponent);
 bootstrapApplication(HeaderComponent);
 ```
+- Components can be used in this way but it is not how we do it. 
+- Idea is to build a tree of components.
+- **Why?** Exchange data and communicate with each other.
+- **Then How?** Call bootstrap only once and use other components inside app/root component.
 
 ### Important Concept Regarding CSS
 - A component can only see its own styles. For example, styles defined in `header.component.css` can only be seen by `HeaderComponent` and not by `AppComponent`.
