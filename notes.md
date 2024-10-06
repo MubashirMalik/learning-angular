@@ -351,7 +351,6 @@ export class UserTasksComponent {
 
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]
-- Types vs Interfaces
 - Maybe some guide here after reading notes (if not enough) so if i have work with modules, this guide is still useful.
 
 ## Angular < 16
