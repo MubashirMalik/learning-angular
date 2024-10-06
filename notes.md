@@ -48,7 +48,7 @@ ng g c tasks/task --skip-tests
     selector: 'app-header', // convention is to use at least two words. header can clash with HTML built-in tag.
     template: '<h1>Hello World</h1>' // Not recommended,
     templateUrl: './header.component.html',
-    standalone: true, // recommended to use true, module = false
+    standalone: true, // standalone components are recommended. for modules set to false
     styleUrl: './header.component.css' // stylesUrl, styles
 })
 export class HeaderComponent
