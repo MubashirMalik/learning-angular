@@ -123,9 +123,8 @@ get imagePath () {
 ```ts
 export class UserComponent {
     // Receiving Props
-    @Input({ required: true }) firstName!: string
+    @Input({ required: true, alias: 'fName' }) firstName!: string // acessible as fName in template
     @Input() lastName!: string
-
     // ! Convinces ts that we will always have value here.
 
     @Input() middleName?: string
@@ -133,7 +132,7 @@ export class UserComponent {
 
     // Another alternative
     @Input() age: number | undefined
-
+}
 ```
 - There is another way to do this using signal inputs.
 
