@@ -17,7 +17,7 @@
 | Section 19 | done |
 | Section 20 | done |
 | Section 21 | completed till 392 |
-
+| Section 46 | done |
 
 ### GOAL
 - Complete till 30th October.
