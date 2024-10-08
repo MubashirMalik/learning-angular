@@ -23,6 +23,12 @@ ng serve
 ng g c header # ng generate component header
 ng g c my-component --skip-tests
 ng g c tasks/task --skip-tests
+
+npm run build # ng build
+ng build # build for production
+
+ng new --ssr # create a new project with server side rendering
+ng add @angular/ssr
 ```
 ### index.html
 - Loaded by the browsers when visitors visit the website.
@@ -123,7 +129,7 @@ get imagePath () {
 ```ts
 export class UserComponent {
     // Receiving Props
-    @Input({ required: true, alias: 'fName' }) firstName!: string // acessible as fName in template
+    @Input({ required: true, alias: 'fName' }) firstName!: string // accessible as fName in template
     @Input() lastName!: string
     // ! Convinces ts that we will always have value here.
 
@@ -284,7 +290,7 @@ export class AppModule {}
 - Selectors found in Angular: https://angular.dev/guide/components/selectors
 
 ```ts
-// Rightway
+// Right way
 @Component({
     `selector: 'button[appButton]'` // button with attribute of appButton on them
 })
@@ -364,6 +370,43 @@ export class UserTasksComponent {
 
 
 ```
+
+### Deploying Angular App
+- In development mode, served code is not optimized.
+    - For size i.e., too big.
+    - Contains extra logging, error messages or details that we don't want to expose to the public.
+- Angular CLI provides `ng add @angular/fire` and `ng deploy` commands for automatic deployment support.
+### SPA
+- Client-side only web app
+- **Idea:** 
+    - Single html file that will be put on some web host.
+    - And its that file that will be requested by the visitors. 
+    - And that file then will load all the JS code that makes up our app.
+    - JS takes over and does magic!
+    - All UI rendering happens on the client-side in the by JS code served.
+    - All code executes in the browser.
+    - No dynamic web server needed -- a static host suffices.
+- To deploy such a site, just find any static web host e.g., Firebase Hosting - Google
+- **Cons:**
+    - Bad SEO
+    - If rendering takes time? Initially missing content
+- **Pros:**
+    - SEO doesn't matter or app behind auth (internal)
+### <mark>SSR</mark>
+- Angular app routes are rendered on-demand on a dynamic web server.
+- So instead of just having a single HTML file and letting client-side Angular do everything, with a server-side rendered app, when a user wants to visit a certain page, the request is handled on the server first, and the page that was requested is pre-rendered on-demand on the server so that the finished page is sent back to the user.
+- Web app is hydrated **(activated)** and becomes a SPA after the initial rendering.
+- Dynamic web server is required.
+- **Potential Disadvantages:** 
+    - Long taking tasks may cause empty pages
+    - Complexity
+
+#### localStorage in SSR?
+- localStorage is not available on server.
+- Use `afterNextRender(() => {})` for code that needs to only run on client-side (browser).
+
+### <mark>Static Site Generation (SSG)</mark>
+- These topics are complex & I believe I should not worry about these at this moment.
 
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]

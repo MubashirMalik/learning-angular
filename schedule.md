@@ -12,8 +12,9 @@
 | Section 5 | done |
 | Section 6 | Completed till 104 |
 | Section 14 | Completed till 271, Observables blockage! |
+| Section 16 | done |
 | Section 17 | done |
-| Section 18 | missing assignments |
+| Section 18 | done |
 | Section 19 | done |
 | Section 20 | done |
 | Section 21 | completed till 392 |
