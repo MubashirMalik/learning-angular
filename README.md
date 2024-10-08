@@ -20,15 +20,21 @@
 ng new project-name # like nest new project-name
 npm start # ng serve
 ng serve
+
+# Schematics
 ng g c header # ng generate component header
 ng g c my-component --skip-tests
 ng g c tasks/task --skip-tests
 
+# Builders
 npm run build # ng build
 ng build # build for production
 
 ng new --ssr # create a new project with server side rendering
 ng add @angular/ssr
+
+ng update
+ng update @angular/core
 ```
 ### index.html
 - Loaded by the browsers when visitors visit the website.
@@ -458,3 +464,22 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 <input type="text" #serverNameInput /> // returns input element
 <button (click)="onAddServer(serverNameInput)">Add Server</button>
 ``` 
+
+### Service Workers
+- JS code runs on one single thread
+- Browser/JS offer us to run an additional thread, decoupled from HTML pages.
+- It means it can run in background e.g., in mobile phones or receive push notifications
+- It can also listen to outgoing network requests and can do sorts of things on them like cache the responses and return cached responses.
+- Can be seen as a proxy between our app and http requests
+- **Command:** `ng add @angular/pwa`
+- **Use case:** Cache dynamic assets & URL for offline
+
+### Unit Testing
+- I bet no one uses this testing, so waste of time section!
+- <mark>do people actually use this?</mark>
+
+### Differential Loading
+- A feature built-in Angular that allows to ship code that works for all users but doesn't force all users to force all code.
+- For example: 
+    - User A with Modern Browser: needs no/less polyfills, smaller bundle required
+    - User B with Legacy Browser: needs all/more polyfills, bigger bundle required
