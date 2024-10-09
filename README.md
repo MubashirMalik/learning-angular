@@ -417,6 +417,10 @@ export class UserTasksComponent {
 ### Topics to Revisit/Revise
 - Signals: Videos: [28, 32]
 - Maybe some guide here after reading notes (if not enough) so if i have work with modules, this guide is still useful.
+- Topics covered in <16 but not found in newer course so need to revisit lectures or any resource and make notes:
+    - View Child
+    - Component Lifecycle hook: ngOnInit etc
+    - Content Child
 
 ## Angular < 16
 
@@ -458,12 +462,14 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 ```
 
 ### Local Reference in Templates
-- Local reference can only be used in the template where it is defined. No in ts file.
+- Local reference can only be used in the template where it is defined. Not in ts file.
 - I think this is like `useRef` in React.
 ```ts
 <input type="text" #serverNameInput /> // returns input element
 <button (click)="onAddServer(serverNameInput)">Add Server</button>
 ``` 
+### Animations
+- Something Angular supports but I am not interested in CSS!
 
 ### Service Workers
 - JS code runs on one single thread

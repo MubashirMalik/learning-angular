@@ -11,14 +11,15 @@
 | 4: Angular Essentials - Time To Practice  |   done |
 | 5: Debugging Angular Apps | done |
 | 6: | Completed till 104 |
-| Section 14 | Completed till 271, Observables blockage! |
-| Section 16 | done |
-| Section 17 | done |
-| Section 18 | done |
-| Section 19 | done |
-| Section 20 | done |
-| Section 21 | completed till 392 |
-| 42: Angular Animations | 
+| 14 | Completed till 271, Observables blockage! |
+| 16: Deploying Angular Apps - CSR, SSR, SGA| done |
+| 17: Course Roundup & Next Steps | done |
+| 18: The Basics [Angular < 16] | done |
+| 19: Course Project - The Basics [Angular < 16]| done |
+| 20: Debugging [Angular < 16] | done |
+| 21: Components & Data Binding Deep Dive [Angular < 16] | done |
+| 22: Course Project - Components & Data Binding [Angular < 16] | need to complete |
+| 42: Angular Animations | done
 | 43: Adding Offline Capabilities with Service Workers | done
 | 44: A Basic Introduction to Unit Testing in Angular Apps | done |
 | 45: Angular as a Platform & Closer Look at the CLI | done |
